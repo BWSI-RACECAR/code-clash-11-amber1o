@@ -1,4 +1,4 @@
- """
+"""
 Copyright MIT BWSI Autonomous RACECAR Course
 MIT License
 Summer 2022
