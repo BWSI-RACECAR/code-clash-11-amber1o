@@ -39,13 +39,12 @@ Total profit = 4 + 8 = 12.
 class Solution:
     def stonks(self, prices):
         profit = 0
-        for i in range(1, days):
+        for i in range(1, range(prices)):
             if prices[i] > prices[i-1]:
                 profit += prices[i] - prices[i-1]
             if profit == 0:
                 print("DO NOT BUY")
         return profit
-
 def main():
     array = input().split(" ")
     for x in range (0, len(array)):
