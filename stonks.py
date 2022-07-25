@@ -41,33 +41,12 @@ Buy during hour 2 (price = 1), sell during hour 3 (price = 5), net profit = 5 - 
 Then, buy during hour 4 (price = 3), sell during hour 5 (price = 4), net profit = 4 - 3 = 1
 Total profit = 4 + 1 = 5
 
-What the code does:
-
------------------------------------ Window #1 -----------------------------------
-Iterator        x               min_price_1     x - min_price_1     max_profit_1
-0               7               7               7 - 7 = 0           0               
-1               1               1               1 - 1 = 0           0
-2               5               1               5 - 1 = 4           4
-3               3               1               3 - 1 = 2 [X]       4
-4               4               1               4 - 1 = 3 [X]       4
-5               0               0               0 - 0 = 0 [X]       4
-
------------------------------------ Window #2 -----------------------------------
-Iterator        x               max_price_2     max_price_2 - x     max_profit_2
-5               0               0               0 - 0 = 0           0               
-4               4               4               4 - 4 = 0           0
-3               3               4               4 - 3 = 1           1
-2               5               5               5 - 5 = 0 [X]       1
-1               1               5               5 - 1 = 4           4
-0               7               7               7 - 7 = 0 [X]       4
-
-profit_1 = [0, 0, 4, 4, 4, 4]
-profit_2 = [4, 4, 1, 1, 0, 0]
-profit_s = [4, 4, 5, 5, 4, 4] <- maximum from this list is 5, therefore answer is 5
 """
 
 class Solution:
     def stonks(self, prices):
+        
+      
         min_price_1 = 100000 
         profit_1 = []  
         max_profit_1 = 0 
@@ -96,7 +75,15 @@ class Solution:
             profit_2[i] = max_profit_2
 
         max_profit = 0 
+        for i in range(len(prices)): 
+            sum_profit = profit_1[i] + profit_2[i]
+            if sum_profit > max_profit: 
+                max_profit = sum_profit
+        
+        print(profit_1)
+        print(profit_2)
 
+        return max_profit 
 def main():
     array = input().split(" ")
     for x in range (0, len(array)):
@@ -108,3 +95,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
